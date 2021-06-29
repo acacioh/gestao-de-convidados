@@ -3,38 +3,36 @@ package br.com.AcacioH.gestaodeconvidados.controller;
 import br.com.AcacioH.gestaodeconvidados.model.Guest;
 import br.com.AcacioH.gestaodeconvidados.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("guest")
+@Controller
 public class GuestController {
+
     @Autowired
     private GuestService guestService;
 
-    @PostMapping
-    public Guest create(@RequestBody Guest guest) {
-        return guestService.create(guest);
+    @GetMapping("convidados")
+    public String guests(Model model) {
+        List<Guest> guests = guestService.list();
+        model.addAttribute("guests", guests);
+
+        Guest guest = new Guest();
+        model.addAttribute("guest", guest);
+
+        return "convidados";
     }
 
-    @GetMapping("{id}")
-    public Guest read(@PathVariable Integer id) {
-        return guestService.read(id);
+    @PostMapping("cadastrar")
+    public String create(@ModelAttribute Guest guest, Model model) {
+        guestService.create(guest);
+
+        return guests(model);
     }
 
-    @PutMapping
-    public Guest update(@RequestBody Guest guest) {
-        return guestService.update(guest);
-    }
-
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
-        guestService.delete(id);
-    }
-
-    @GetMapping
-    public List<Guest> list() {
-        return guestService.list();
-    }
 }
