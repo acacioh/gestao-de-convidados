@@ -1,7 +1,13 @@
-package br.com.AcacioH.gestaodeconvidados.dto;
+package br.com.AcacioH.gestaodeconvidados.model;
 
-public class GuestDto {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Guest {
+    @Id
     private Integer id;
+
     private String name;
 
     public Integer getId() {
