@@ -3,26 +3,30 @@ package br.com.AcacioH.gestaodeconvidados.controller;
 import br.com.AcacioH.gestaodeconvidados.model.Guest;
 import br.com.AcacioH.gestaodeconvidados.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GuestController {
     @Autowired
     private GuestService guestService;
 
-    public Guest create(Guest guest) {
+    @PostMapping
+    public Guest create(@RequestBody Guest guest) {
         return guestService.create(guest);
     }
 
-    public Guest read(Integer id) {
+    @GetMapping("{id}")
+    public Guest read(@PathVariable Integer id) {
         return guestService.read(id);
     }
 
-    public Guest update(Guest guest) {
+    @PutMapping
+    public Guest update(@RequestBody Guest guest) {
         return guestService.update(guest);
     }
 
-    public void delete(Integer id) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id) {
         guestService.delete(id);
     }
 }
