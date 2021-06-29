@@ -5,6 +5,8 @@ import br.com.AcacioH.gestaodeconvidados.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GuestService {
     @Autowired
@@ -33,7 +35,9 @@ public class GuestService {
         if (guest == null) {
             throw new RuntimeException("Convidado não encontrado");
         }
+    }
 
-
+    public List<Guest> list() {
+        return guestRepository.findAll();
     }
 }

@@ -5,7 +5,10 @@ import br.com.AcacioH.gestaodeconvidados.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("guest")
 public class GuestController {
     @Autowired
     private GuestService guestService;
@@ -28,5 +31,10 @@ public class GuestController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id) {
         guestService.delete(id);
+    }
+
+    @GetMapping
+    public List<Guest> list() {
+        return guestService.list();
     }
 }
