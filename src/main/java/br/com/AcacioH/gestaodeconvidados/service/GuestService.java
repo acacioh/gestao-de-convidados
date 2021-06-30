@@ -35,6 +35,8 @@ public class GuestService {
         if (guest == null) {
             throw new RuntimeException("Convidado não encontrado");
         }
+
+        guestRepository.delete(guest);
     }
 
     public List<Guest> list() {
