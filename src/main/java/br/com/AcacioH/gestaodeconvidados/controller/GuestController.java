@@ -40,7 +40,7 @@ public class GuestController {
     public String delete(@PathVariable int id, Model model) {
         guestService.delete(id);
 
-        return guests(model);
+        return "redirect:/convidados";
     }
 
 }
