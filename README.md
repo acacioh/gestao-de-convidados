@@ -23,3 +23,9 @@ password: password
   
 - Execute a imagem
 `docker run -p 8080:8080 --name gestao-de-convidados acacioh/gestao-de-convidados:latest`
+  
+### Publicação
+
+Esse projeto está publicado no jfrog. Você pode executá-lo com
+
+`docker run --name gestao-de-convidados -p 8080:8080 acacioh.jfrog.io/acacioh-docker/gestao-de-convidados:latest`
