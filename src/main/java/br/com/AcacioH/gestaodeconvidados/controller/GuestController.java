@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Max;
@@ -27,6 +28,7 @@ public class GuestController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Cadastra um novo convidado")
     public Guest create(@ApiParam("Nome do convidado") @RequestParam @NotBlank String name) {
         return guestService.create(name);
@@ -45,6 +47,7 @@ public class GuestController {
     }
 
     @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiOperation("Remove um convidado da lista de convidados")
     public void delete(@ApiParam("Identificador de um convidado") @PathVariable Integer id) {
         guestService.delete(id);
