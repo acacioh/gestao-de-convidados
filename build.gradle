@@ -20,6 +20,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.3'
 }
 
 test {
