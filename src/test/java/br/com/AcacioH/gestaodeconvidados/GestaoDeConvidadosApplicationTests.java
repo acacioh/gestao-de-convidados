@@ -20,7 +20,7 @@ class GestaoDeConvidadosApplicationTests {
 
     @Test
     @WithMockUser(username = "user", password = "password")
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void testList() throws Exception {
         this.mockMvc.perform(
                 get("/guests")
                         .param("page", "0")

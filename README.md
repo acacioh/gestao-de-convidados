@@ -29,3 +29,9 @@ password: password
 Esse projeto está publicado no jfrog. Você pode executá-lo com
 
 `docker run --name gestao-de-convidados -p 8080:8080 acacioh.jfrog.io/acacioh-docker/gestao-de-convidados:latest`
+
+### Testes
+
+Execute os testes com
+
+`./gradlew test --info`
