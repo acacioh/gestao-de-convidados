@@ -3,44 +3,33 @@ package br.com.AcacioH.gestaodeconvidados.controller;
 import br.com.AcacioH.gestaodeconvidados.model.Guest;
 import br.com.AcacioH.gestaodeconvidados.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@Controller
+@RestController
+@RequestMapping("guests")
 public class GuestController {
 
     @Autowired
     private GuestService guestService;
 
-    @GetMapping("convidados")
-    public String guests(Model model) {
-        List<Guest> guests = guestService.list();
-        model.addAttribute("guests", guests);
-
-        Guest guest = new Guest();
-        model.addAttribute("guest", guest);
-
-        return "convidados";
+    @GetMapping
+    public Page<Guest> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        return guestService.findAll(page, size);
     }
 
-    @PostMapping("convidados")
-    public String create(@ModelAttribute Guest guest, Model model) {
-        guestService.create(guest);
-
-        return guests(model);
+    @PostMapping
+    public Guest create(String name) {
+        return guestService.create(name);
     }
 
-    @PostMapping("convidados/{id}")
-    public String delete(@PathVariable int id, Model model) {
-        guestService.delete(id);
-
-        return "redirect:/convidados";
+    @GetMapping("{id}")
+    public Guest findById(int id) {
+        return guestService.findById(id);
     }
 
+    @PutMapping
+    public Guest update(Guest guest) {
+        return guestService.update(guest);
+    }
 }
