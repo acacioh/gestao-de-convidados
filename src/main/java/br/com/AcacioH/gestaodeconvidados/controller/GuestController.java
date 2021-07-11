@@ -14,7 +14,7 @@ public class GuestController {
     private GuestService guestService;
 
     @GetMapping
-    public Page<Guest> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public Page<Guest> findAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         return guestService.findAll(page, size);
     }
 
@@ -24,12 +24,17 @@ public class GuestController {
     }
 
     @GetMapping("{id}")
-    public Guest findById(int id) {
+    public Guest findById(Integer id) {
         return guestService.findById(id);
     }
 
     @PutMapping
     public Guest update(Guest guest) {
         return guestService.update(guest);
+    }
+
+    @DeleteMapping
+    public void delete(Integer id) {
+        guestService.delete(id);
     }
 }
