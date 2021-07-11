@@ -16,7 +16,7 @@ public class Swagger2Config {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.AcacioH.gestaodeconvidados.controller"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.regex("/.*")).build().apiInfo(apiEndPointsInfo());
     }
 

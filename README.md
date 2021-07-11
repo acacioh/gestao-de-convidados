@@ -6,3 +6,9 @@ Introdução Spring Boot
 - Execute com `./gradlew bootRun`
 
 - visite o endereço `http://localhost:8080/swagger-ui/index.html`
+
+- Credenciais:
+```
+username: user
+password: password  
+```
