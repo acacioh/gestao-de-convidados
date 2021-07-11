@@ -2,45 +2,54 @@ package br.com.AcacioH.gestaodeconvidados.controller;
 
 import br.com.AcacioH.gestaodeconvidados.model.Guest;
 import br.com.AcacioH.gestaodeconvidados.service.GuestService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
-@Controller
+@RestController
+@RequestMapping("guests")
 public class GuestController {
 
     @Autowired
     private GuestService guestService;
 
-    @GetMapping("convidados")
-    public String guests(Model model) {
-        List<Guest> guests = guestService.list();
-        model.addAttribute("guests", guests);
-
-        Guest guest = new Guest();
-        model.addAttribute("guest", guest);
-
-        return "convidados";
+    @GetMapping
+    @ApiOperation("Retorna a lista de convidados paginada")
+    public Page<Guest> findAll(@ApiParam("Número da página iniciado em 0") @RequestParam(defaultValue = "0") @Min(0) Integer page,
+                               @ApiParam("Tamanho da página") @RequestParam(defaultValue = "10") @Min(1) @Max(100) Integer size) {
+        return guestService.findAll(page, size);
     }
 
-    @PostMapping("convidados")
-    public String create(@ModelAttribute Guest guest, Model model) {
-        guestService.create(guest);
-
-        return guests(model);
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation("Cadastra um novo convidado")
+    public Guest create(@ApiParam("Nome do convidado") @RequestParam @NotBlank String name) {
+        return guestService.create(name);
     }
 
-    @PostMapping("convidados/{id}")
-    public String delete(@PathVariable int id, Model model) {
+    @GetMapping("{id}")
+    @ApiOperation("Retorna as informações de um convidado específico")
+    public Guest findById(@ApiParam("Identificador de um convidado") @PathVariable Integer id) {
+        return guestService.findById(id);
+    }
+
+    @PutMapping
+    @ApiOperation("Atualiza as informações de um convidado")
+    public Guest update(@RequestBody Guest guest) {
+        return guestService.update(guest);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiOperation("Remove um convidado da lista de convidados")
+    public void delete(@ApiParam("Identificador de um convidado") @PathVariable Integer id) {
         guestService.delete(id);
-
-        return "redirect:/convidados";
     }
-
 }
