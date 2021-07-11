@@ -37,11 +37,7 @@ public class GuestService {
     }
 
     public void delete(Integer id) {
-        Guest guest = guestRepository.findById(id).orElse(null);
-
-        if (guest == null) {
-            throw new RuntimeException("Convidado não encontrado");
-        }
+        Guest guest = getValidGuest(id);
 
         guestRepository.delete(guest);
     }
