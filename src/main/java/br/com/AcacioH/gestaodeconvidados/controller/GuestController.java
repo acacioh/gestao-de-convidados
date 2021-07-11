@@ -28,7 +28,7 @@ public class GuestController {
 
     @PostMapping
     @ApiOperation("Cadastra um novo convidado")
-    public Guest create(@ApiParam("Nome do convidado") @NotBlank String name) {
+    public Guest create(@ApiParam("Nome do convidado") @RequestParam @NotBlank String name) {
         return guestService.create(name);
     }
 
@@ -44,9 +44,9 @@ public class GuestController {
         return guestService.update(guest);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     @ApiOperation("Remove um convidado da lista de convidados")
-    public void delete(@ApiParam("Identificador de um convidado") Integer id) {
+    public void delete(@ApiParam("Identificador de um convidado") @PathVariable Integer id) {
         guestService.delete(id);
     }
 }
