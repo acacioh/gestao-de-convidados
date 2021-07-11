@@ -33,6 +33,9 @@ public class GuestService {
     }
 
     public Guest update(Guest guest) {
+        // Just validate if the guest being updated is really an existing guest
+        getValidGuest(guest.getId());
+
         return guestRepository.save(guest);
     }
 

@@ -24,7 +24,7 @@ public class GuestController {
     }
 
     @GetMapping("{id}")
-    public Guest findById(Integer id) {
+    public Guest findById(@PathVariable Integer id) {
         return guestService.findById(id);
     }
 
