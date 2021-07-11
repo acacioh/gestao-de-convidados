@@ -12,3 +12,14 @@ Introdução Spring Boot
 username: user
 password: password  
 ```
+
+### Docker
+
+- Construa um jar do projeto
+`./gradlew build`
+
+- Construa a imagem
+`docker build -t acacioh/gestao-de-convidados .`
+  
+- Execute a imagem
+`docker run -p 8080:8080 --name gestao-de-convidados acacioh/gestao-de-convidados:latest`
