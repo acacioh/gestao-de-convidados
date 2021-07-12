@@ -28,4 +28,22 @@ class GestaoDeConvidadosApplicationTests {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @WithMockUser(username = "user", password = "password")
+    public void testById() throws Exception {
+        this.mockMvc.perform(
+                get("/guests/1"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(username = "user", password = "password")
+    public void testByIdNotFound() throws Exception {
+        this.mockMvc.perform(
+                get("/guests/10"))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
 }
