@@ -26,15 +26,27 @@ password: password
 
 ### Imagem publicada
 
-Existe uma imagem publicada do projeto no JFrog. Execute com
-
-`docker run --name gestao-de-convidados -p 8080:8080 acacioh.jfrog.io/acacioh-docker/gestao-de-convidados:latest`
-  
-### Publicação
-
 Esse projeto está publicado no jfrog. Você pode executá-lo com
 
 `docker run --name gestao-de-convidados -p 8080:8080 acacioh.jfrog.io/acacioh-docker/gestao-de-convidados:latest`
+
+### Deploy
+
+Para publicar esse projeto no JFrog,
+
+- primeiro construa uma imagem como nos dois primeiros passos da seção [Docker](###Docker) anterior.
+
+- Faça login com
+
+`docker login acacioh.jfrog.io`
+
+- Crie uma tag para a imagem
+
+`docker tag acacioh/gestao-de-convidados acacioh.jfrog.io/acacioh-docker/gestao-de-convidados`
+
+- Envie para o JFrog
+
+`docker push acacioh.jfrog.io/acacioh-docker/gestao-de-convidados`
 
 ### Testes
 
