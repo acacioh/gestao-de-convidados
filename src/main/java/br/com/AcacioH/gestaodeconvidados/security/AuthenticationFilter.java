@@ -24,7 +24,6 @@ import java.util.Date;
 import static br.com.AcacioH.gestaodeconvidados.security.SecurityConstants.EXPIRATION_TIME;
 import static br.com.AcacioH.gestaodeconvidados.security.SecurityConstants.KEY;
 
-
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
@@ -56,7 +55,5 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         Claims claims = Jwts.claims().setSubject(((User) auth.getPrincipal()).getUsername());
         String token = Jwts.builder().setClaims(claims).signWith(key, SignatureAlgorithm.HS512).setExpiration(exp).compact();
         res.addHeader("token", token);
-
-
     }
 }
