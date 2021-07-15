@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private ApplicationUserRepository applicationUserRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserController(ApplicationUserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+    public UserController(ApplicationUserRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @PostMapping("/record")
