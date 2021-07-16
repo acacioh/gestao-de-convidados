@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// Adapted https://medium.com/wolox/securing-applications-with-jwt-spring-boot-da24d3d98f83
+
 @RestController
 @RequestMapping("/users")
 public class UserController {

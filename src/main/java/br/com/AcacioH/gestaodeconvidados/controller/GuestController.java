@@ -30,7 +30,7 @@ public class GuestController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Cadastra um novo convidado")
-    public Guest create(@ApiParam("Nome do convidado") @RequestParam @NotBlank String name) {
+    public Guest create(@ApiParam("Nome do convidado") @RequestBody @NotBlank String name) {
         return guestService.create(name);
     }
 
