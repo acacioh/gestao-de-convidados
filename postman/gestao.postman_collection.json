@@ -1,0 +1,176 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Gestão de Convidados",
+		"_postman_id": "ddbfe05b-b5d8-9521-39d6-71a4199544b5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar usuario",
+			"request": {
+				"url": "http://localhost:8080/users/record",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"password\",\n\t\"username\": \"acacio\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:8080/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"password\",\n\t\"username\": \"acacio\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar convidado",
+			"request": {
+				"url": "http://localhost:8080/guests",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhY2FjaW8iLCJleHAiOjE2MjYzOTYyMzR9.KUrmHk0-kqptXd8CFWRjqT5SHY64yJq5UOcLaoxlWsWKvBS26UDKNKfmp6S9siV7iije6UaC1495kHjBJa590g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Acácio\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Apagar convidado",
+			"request": {
+				"url": "http://localhost:8080/guests/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhY2FjaW8iLCJleHAiOjE2MjYzOTc2MjF9.Bn7PMSjWUHNWgt7KpIRF4DuV_K8KOAZhxjR1Kw-uolAhRfD6c-pqh57QFKv6dfGBD1_eLb3vv7kM-Fy2ayoSaQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar convidado",
+			"request": {
+				"url": "http://localhost:8080/guests",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhY2FjaW8iLCJleHAiOjE2MjYzOTc2MjF9.Bn7PMSjWUHNWgt7KpIRF4DuV_K8KOAZhxjR1Kw-uolAhRfD6c-pqh57QFKv6dfGBD1_eLb3vv7kM-Fy2ayoSaQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"name\": \"string\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Convidados",
+			"request": {
+				"url": "http://localhost:8080/guests",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhY2FjaW8iLCJleHAiOjE2MjYzOTc2MjF9.Bn7PMSjWUHNWgt7KpIRF4DuV_K8KOAZhxjR1Kw-uolAhRfD6c-pqh57QFKv6dfGBD1_eLb3vv7kM-Fy2ayoSaQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"password\",\n\t\"username\": \"username\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Convidado por id",
+			"request": {
+				"url": "http://localhost:8080/guests/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhY2FjaW8iLCJleHAiOjE2MjYzOTY4MTF9.Y6gNX2Utvc5HTvvj76zmk6rEtutTmqZSgLyTY7FMxZkVqRoDZ7WvgdQx3Um0j-oiHHBohPz-eZcflgphuXI4pw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"password\",\n\t\"username\": \"username\"\n}"
+				},
+				"description": "Login"
+			},
+			"response": []
+		}
+	]
+}
